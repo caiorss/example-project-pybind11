@@ -12,7 +12,6 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 
 
-
 // ===================== Function Implementation ===================//
 
          //-----------------------------------------//
@@ -232,21 +231,9 @@ PYBIND11_MODULE(test2, m) {
             .def("call", &LinearFunctor::operator())      // Register function-call operator with name 'call'
             .def("__call__", &LinearFunctor::operator ()) // Register fun-call operator
             .def("__repr__", &LinearFunctor::toString)    // Register strin representation
-            .def_readwrite("A", &LinearFunctor::A)   // Register field A
-            .def_readwrite("B", &LinearFunctor::B);  // Register field B
+            .def_readwrite("A", &LinearFunctor::A)        // Register field A
+            .def_readwrite("B", &LinearFunctor::B);       // Register field B
 
-#if 0
-    using StdVectorDouble = std::vector<double>;
-    py::class_<StdVectorDouble>(m, "StdVectorDouble")
-       .def(py::init<size_t, double>())
-       // .def("push_back", &std::vector<double>::push_back)
-       .def("clear",  &StdVectorDouble::clear)
-       .def("size",   &StdVectorDouble::size)
-       .def("push_back", [](StdVectorDouble& vec, double x)
-                           { vec.push_back(x); })
-       .def("at",        [](StdVectorDouble const& vec, size_t i)
-                           { return vec[i];  });
-#endif
 
     // ------ Register Functions with Knowledge of Python API ----//
     //

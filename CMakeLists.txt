@@ -1,3 +1,8 @@
+#      Author: Caio Rodrigues 
+# Description:  Sample CMake + Conan + Pybind11 project
+#        Note:  Requires Conan and Python Development files installed 
+#----------------------------------------------------------
+
 cmake_minimum_required(VERSION 2.8)
 project(pybind11-experiments)
 set(CMAKE_CXX_STANDARD 17)
@@ -42,19 +47,13 @@ endfunction()
 
 find_package(pybind11 CONFIG REQUIRED)
 
+pybind11_add_module(SampleModule SampleModule.cpp)
+# Copy binary to ./bin directory after module is built
+copy_after_build(SampleModule)
 
 # Target1: cashflow - Python module basics
 #.....................................
 pybind11_add_module(cashflow cashflow.cpp)
 copy_after_build(cashflow)
 
-pybind11_add_module(test2 test2.cpp)
-copy_after_build(test2)
 
-
-
-# Copy targets to ./ - Directory where is this file CMakeLists.txt (project top level dir)
-# install(TARGETS basics DESTINATION ${CMAKE_CURRENT_LIST_DIR})
-
-
-#add_executable( "main.cpp")
