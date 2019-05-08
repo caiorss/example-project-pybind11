@@ -1,0 +1,13 @@
+*.exe
+*.bin
+*.dll
+*.so
+*.obj
+*.idl
+*.pdb
+*.tar.gz
+*.jar
+__pycache__/*
+cache/*
+*.so
+*.txt.user
