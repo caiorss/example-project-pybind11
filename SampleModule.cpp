@@ -191,7 +191,7 @@ void callPyObjectMethod(py::object obj, double k)
 
 // ============= Module Registration ================================//
 
-PYBIND11_MODULE(test2, m) {
+PYBIND11_MODULE(SampleModule, m) {
     // optional module docstring
     m.doc() = "Sample Python built with C++ CeePlusPlus ";
 
@@ -212,6 +212,8 @@ PYBIND11_MODULE(test2, m) {
     );
 
     m.def("vectorCumulativeSum", &vectorCumulativeSum);
+
+    m.def("tabulate1", &tabulate1);
 
     py::enum_<MathErrorCode>(m, "MathErrorCode", py::arithmetic())
        .value("OK",           MathErrorCode::OK)
@@ -237,18 +239,19 @@ PYBIND11_MODULE(test2, m) {
 
     // ------ Register Functions with Knowledge of Python API ----//
     //
-    m.def("pyFuncArgsKwargs",
-          &pyFuncArgsKwargs,
-          "Sample Python function taking a tuple");
+
+    m.def("computeFormula", &computeFormula);
 
     m.def("showDictionary",
           &showDictionary,
           "Display dictionary in console" );
 
+    m.def("pyFuncArgsKwargs",
+          &pyFuncArgsKwargs,
+          "Sample Python function taking a tuple");
+
     m.def("dictionaryArgument", &dictionaryArgument);
     m.def("callPyObjectMethod", &callPyObjectMethod);
-    m.def("tabulate1", &tabulate1);
-    m.def("computeFormula", &computeFormula);
 
 } /** --- End of PYBIND11_MODULE registration --- */
 
