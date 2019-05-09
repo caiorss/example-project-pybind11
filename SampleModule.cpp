@@ -12,6 +12,14 @@
 namespace py = pybind11;
 using namespace pybind11::literals;
 
+ 
+#ifdef OVERFLOW
+  #undef OVERFLOW
+#endif
+
+#ifdef UNDERFLOW
+  #undef UNDERFLOW
+#endif
 
 // ===================== Function Implementation ===================//
 
