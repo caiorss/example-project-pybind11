@@ -1,6 +1,10 @@
 *.exe
-*.bin
+*.bin    
 *.dll
+*.pyd
+build/*
+.vs/*
+compile_commands.json        
 *.so
 *.obj
 *.idl
