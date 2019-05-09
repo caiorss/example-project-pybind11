@@ -1,5 +1,5 @@
 
-import test2 as t 
+import SampleModule as t 
 
 class Dummy:
   def __init__(self, name):
