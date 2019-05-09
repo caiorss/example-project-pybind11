@@ -3,7 +3,12 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
-#include <cmath>
+
+#if defined(__MINGW32__) || defined(__MINGW64__)
+  #include <math.h>
+#else
+  #include <cmath>
+#endif
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
