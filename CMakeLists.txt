@@ -5,7 +5,12 @@
 
 cmake_minimum_required(VERSION 2.8)
 project(pybind11-experiments)
+
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+
+message(" [INFO] CMAKE_CXX_COMPILER = ${CMAKE_CXX_COMPILER} ")
 
 
 # ============  Conan Boostrap  ======================#
@@ -40,12 +45,21 @@ function(copy_after_build TARGET_NAME )
                                )
 endfunction()
 
+# In Windows set this path to Anaconda 3 Install directory
+if(WIN32)
+    # set(PYTHON_INCLUDE_DIR "C:\\Users\\archbox\\Miniconda3\\pkgs\\python-3.6.5-h0c2934d_0\\include\\")
+    # set(PYTHON_LIBRARY     "C:\\Users\\archbox\\Miniconda3\\pkgs\\python-3.6.5-h0c2934d_0\\python3.dll")
+endif()
+
+# set(Python_ADDITIONAL_VERSIONS 3.4)
+#find_package(PythonLibs  3)
+# find_package(PythonInterp 3)
+find_package(pybind11 CONFIG REQUIRED)
 
 #----------------------------------------------#
 #    Target Configurations                     #
 #----------------------------------------------#
 
-find_package(pybind11 CONFIG REQUIRED)
 
 pybind11_add_module(SampleModule SampleModule.cpp)
 # Copy binary to ./bin directory after module is built
